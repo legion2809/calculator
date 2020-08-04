@@ -10,7 +10,7 @@ namespace Simple_Calculator
             InitializeComponent();
         }
 
-        char oper;
+        string oper;
         double a, result;
         bool sign = true;
 
@@ -18,22 +18,22 @@ namespace Simple_Calculator
         {
             switch (oper)
             {
-                case '+':
+                case "+":
                     result = a + Convert.ToDouble(textBox1.Text);
                     textBox1.Text = result.ToString();
                     label1.Text = "";
                     break;
-                case '-':
+                case "-":
                     result = a - Convert.ToDouble(textBox1.Text);
                     textBox1.Text = result.ToString();
                     label1.Text = "";
                     break;
-                case '*':
+                case "*":
                     result = a * Convert.ToDouble(textBox1.Text);
                     textBox1.Text = result.ToString();
                     label1.Text = "";
                     break;
-                case '/':
+                case "/":
                     if (Convert.ToDouble(textBox1.Text) == 0)
                     {
                         textBox1.Text = "Division by zero attempt";
@@ -44,6 +44,78 @@ namespace Simple_Calculator
                         textBox1.Text = result.ToString();
                         label1.Text = "";
                     }
+                    break;
+                case "sin":
+                    if (radioButton1.Checked == true)
+                    {
+                        result = Math.Sin(Convert.ToDouble(a) * (Math.PI / 180));
+                        textBox1.Text = result.ToString();
+                        label1.Text = "";
+                    } else if (radioButton2.Checked == true)
+                    {
+                        result = Math.Sin(Convert.ToDouble(a));
+                        textBox1.Text = result.ToString();
+                        label1.Text = "";
+                    }
+                    break;
+                case "cos":
+                    if (radioButton1.Checked == true)
+                    {
+                        result = Math.Cos(Convert.ToDouble(a) * (Math.PI / 180));
+                        textBox1.Text = result.ToString();
+                        label1.Text = "";
+                    } else if (radioButton2.Checked == true)
+                    {
+                        result = Math.Cos(Convert.ToDouble(a));
+                        textBox1.Text = result.ToString();
+                        label1.Text = "";
+                    }
+                    break;
+                case "tg":
+                    if (radioButton1.Checked == true)
+                    {
+                        if (Convert.ToDouble(a) == 90.0 || Convert.ToDouble(a) == 270.0)
+                        {
+                            textBox1.Text = "undefined";
+                            label1.Text = "";
+                        } else
+                        {
+                            result = Math.Tan(Convert.ToDouble(a) * (Math.PI / 180));
+                            textBox1.Text = result.ToString();
+                            label1.Text = "";
+                        }
+                    } else if (radioButton2.Checked == true) {
+                        result = Math.Tan(Convert.ToDouble(a));
+                        textBox1.Text = result.ToString();
+                        label1.Text = "";
+                    }
+                    break;
+                case "ctg":
+                    if (radioButton1.Checked == true)
+                    {
+                        if (Convert.ToDouble(a) == 0.0 || Convert.ToDouble(a) == 180.0 || Convert.ToDouble(a) == 360.0)
+                        {
+                            textBox1.Text = "undefined";
+                            label1.Text = "";
+                        }
+                        else
+                        {
+                            result = 1.0 / Math.Tan(Convert.ToDouble(a) * (Math.PI / 180));
+                            textBox1.Text = result.ToString();
+                            label1.Text = "";
+                        }
+                    }
+                    else if (radioButton2.Checked == true)
+                    {
+                        result = 1.0 / Math.Tan(Convert.ToDouble(a));
+                        textBox1.Text = result.ToString();
+                        label1.Text = "";
+                    }
+                    break;
+                case "sqrt":
+                    result = Math.Sqrt(a);
+                    textBox1.Text = result.ToString();
+                    label1.Text = "";
                     break;
                 default:
                     break;
@@ -111,7 +183,7 @@ namespace Simple_Calculator
             a = Convert.ToDouble(textBox1.Text);
             textBox1.Clear();
             label1.Text = a + "/";
-            oper = '/';
+            oper = "/";
         }
 
         private void Button13_Click(object sender, EventArgs e)
@@ -119,7 +191,7 @@ namespace Simple_Calculator
             a = Convert.ToDouble(textBox1.Text);
             textBox1.Clear();
             label1.Text = a + "+";
-            oper = '+';
+            oper = "+";
         }
 
         private void Button14_Click(object sender, EventArgs e)
@@ -127,14 +199,14 @@ namespace Simple_Calculator
             a = Convert.ToDouble(textBox1.Text);
             textBox1.Clear();
             label1.Text = a + "-";
-            oper = '-';
+            oper = "-";
         }
 
         private void Button15_Click(object sender, EventArgs e)
         {
             a = Convert.ToDouble(textBox1.Text);
             label1.Text = a + "*";
-            oper = '*';
+            oper = "*";
             textBox1.Clear();
         }
 
@@ -161,6 +233,56 @@ namespace Simple_Calculator
             {
                 textBox1.Text += inputed[i];
             }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            a = Convert.ToDouble(textBox1.Text);
+            label1.Text = "sin(" + a + ")";
+            oper = "sin";
+            textBox1.Clear();
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            a = Convert.ToDouble(textBox1.Text);
+            label1.Text = "cos(" + a + ")";
+            oper = "cos";
+            textBox1.Clear();
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            a = Convert.ToDouble(textBox1.Text);
+            label1.Text = "tg(" + a + ")";
+            oper = "tg";
+            textBox1.Clear();
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            a = Convert.ToDouble(textBox1.Text);
+            label1.Text = "ctg(" + a + ")";
+            oper = "ctg";
+            textBox1.Clear();
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            a = Convert.ToDouble(textBox1.Text);
+            label1.Text = "sqrt(" + a + ")";
+            oper = "sqrt";
+            textBox1.Clear();
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            if (sign)
+            {
+                sign = false;
+            }
+
+            if (textBox1.Text.IndexOf(",") == -1) textBox1.Text += ',';
         }
 
         private void Button12_Click(object sender, EventArgs e)
