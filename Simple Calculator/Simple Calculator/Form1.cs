@@ -113,9 +113,15 @@ namespace Simple_Calculator
                     }
                     break;
                 case "sqrt":
-                    result = Math.Sqrt(a);
-                    textBox1.Text = result.ToString();
-                    label1.Text = "";
+                    if (a < 0)
+                    {
+                        textBox1.Text = "Invaild operation";
+                    } else
+                    {
+                        result = Math.Sqrt(a);
+                        textBox1.Text = result.ToString();
+                        label1.Text = "";
+                    }
                     break;
                 default:
                     break;
