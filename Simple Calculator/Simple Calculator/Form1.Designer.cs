@@ -57,6 +57,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.button23 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
+            this.button25 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -211,7 +212,7 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(312, 310);
+            this.button16.Location = new System.Drawing.Point(312, 307);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(57, 44);
             this.button16.TabIndex = 15;
@@ -338,12 +339,23 @@
             this.button24.UseVisualStyleBackColor = true;
             this.button24.Click += new System.EventHandler(this.button24_Click);
             // 
+            // button25
+            // 
+            this.button25.Location = new System.Drawing.Point(312, 128);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(57, 23);
+            this.button25.TabIndex = 28;
+            this.button25.Text = "x^y";
+            this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(385, 398);
+            this.Controls.Add(this.button25);
             this.Controls.Add(this.button24);
             this.Controls.Add(this.button23);
             this.Controls.Add(this.radioButton2);
@@ -411,6 +423,7 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.Button button25;
     }
 }
 

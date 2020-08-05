@@ -116,12 +116,18 @@ namespace Simple_Calculator
                     if (a < 0)
                     {
                         textBox1.Text = "Invaild operation";
+                        label1.Text = "";
                     } else
                     {
                         result = Math.Sqrt(a);
                         textBox1.Text = result.ToString();
                         label1.Text = "";
                     }
+                    break;
+                case "pow":
+                    result = Math.Pow(a, Convert.ToDouble(textBox1.Text));
+                    textBox1.Text = result.ToString();
+                    label1.Text = "";
                     break;
                 default:
                     break;
@@ -289,6 +295,14 @@ namespace Simple_Calculator
             }
 
             if (textBox1.Text.IndexOf(",") == -1) textBox1.Text += ',';
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            a = Convert.ToDouble(textBox1.Text);
+            label1.Text = a + "^";
+            oper = "pow";
+            textBox1.Clear();
         }
 
         private void Button12_Click(object sender, EventArgs e)
