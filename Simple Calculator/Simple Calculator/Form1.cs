@@ -10,7 +10,7 @@ namespace Simple_Calculator
             InitializeComponent();
         }
 
-        string oper;
+        string oper; // Defines a mathematic operation
         double a, result;
         bool sign = true;
 
@@ -46,70 +46,79 @@ namespace Simple_Calculator
                     }
                     break;
                 case "sin":
-                    if (radioButton1.Checked == true)
+                    switch (radioButton1.Checked)
                     {
-                        result = Math.Sin(Convert.ToDouble(a) * (Math.PI / 180));
-                        textBox1.Text = result.ToString();
-                        label1.Text = "";
-                    } else if (radioButton2.Checked == true)
-                    {
-                        result = Math.Sin(Convert.ToDouble(a));
-                        textBox1.Text = result.ToString();
-                        label1.Text = "";
+                        case true:
+                            result = Math.Sin(Convert.ToDouble(a) * (Math.PI / 180));
+                            textBox1.Text = result.ToString();
+                            label1.Text = "";
+                            break;
+                        case false:
+                            result = Math.Sin(Convert.ToDouble(a));
+                            textBox1.Text = result.ToString();
+                            label1.Text = "";
+                            break;
                     }
                     break;
                 case "cos":
-                    if (radioButton1.Checked == true)
+                    switch (radioButton1.Checked)
                     {
-                        result = Math.Cos(Convert.ToDouble(a) * (Math.PI / 180));
-                        textBox1.Text = result.ToString();
-                        label1.Text = "";
-                    } else if (radioButton2.Checked == true)
-                    {
-                        result = Math.Cos(Convert.ToDouble(a));
-                        textBox1.Text = result.ToString();
-                        label1.Text = "";
+                        case true:
+                            result = Math.Cos(Convert.ToDouble(a) * (Math.PI / 180));
+                            textBox1.Text = result.ToString();
+                            label1.Text = "";
+                            break;
+                        case false:
+                            result = Math.Cos(Convert.ToDouble(a));
+                            textBox1.Text = result.ToString();
+                            label1.Text = "";
+                            break;
                     }
                     break;
                 case "tg":
-                    if (radioButton1.Checked == true)
+                    switch (radioButton1.Checked)
                     {
-                        if (Convert.ToDouble(a) == 90.0 || Convert.ToDouble(a) == 270.0)
-                        {
-                            textBox1.Text = "undefined";
-                            label1.Text = "";
-                        } else
-                        {
-                            result = Math.Tan(Convert.ToDouble(a) * (Math.PI / 180));
+                        case true:
+                            if (Convert.ToDouble(a) == 90.0 || Convert.ToDouble(a) == 270.0)
+                            {
+                                textBox1.Text = "undefined";
+                                label1.Text = "";
+                            }
+                            else
+                            {
+                                result = Math.Tan(Convert.ToDouble(a) * (Math.PI / 180));
+                                textBox1.Text = result.ToString();
+                                label1.Text = "";
+                            }
+                            break;
+                        case false:
+                            result = Math.Tan(Convert.ToDouble(a));
                             textBox1.Text = result.ToString();
                             label1.Text = "";
-                        }
-                    } else if (radioButton2.Checked == true) {
-                        result = Math.Tan(Convert.ToDouble(a));
-                        textBox1.Text = result.ToString();
-                        label1.Text = "";
+                            break;
                     }
                     break;
                 case "ctg":
-                    if (radioButton1.Checked == true)
+                    switch (radioButton1.Checked)
                     {
-                        if (Convert.ToDouble(a) == 0.0 || Convert.ToDouble(a) == 180.0 || Convert.ToDouble(a) == 360.0)
-                        {
-                            textBox1.Text = "undefined";
-                            label1.Text = "";
-                        }
-                        else
-                        {
-                            result = 1.0 / Math.Tan(Convert.ToDouble(a) * (Math.PI / 180));
+                        case true:
+                            if (Convert.ToDouble(a) == 0.0 || Convert.ToDouble(a) == 180.0 || Convert.ToDouble(a) == 360.0)
+                            {
+                                textBox1.Text = "undefined";
+                                label1.Text = "";
+                            }
+                            else
+                            {
+                                result = 1.0 / Math.Tan(Convert.ToDouble(a) * (Math.PI / 180));
+                                textBox1.Text = result.ToString();
+                                label1.Text = "";
+                            }
+                            break;
+                        case false:
+                            result = 1.0 / Math.Tan(Convert.ToDouble(a));
                             textBox1.Text = result.ToString();
                             label1.Text = "";
-                        }
-                    }
-                    else if (radioButton2.Checked == true)
-                    {
-                        result = 1.0 / Math.Tan(Convert.ToDouble(a));
-                        textBox1.Text = result.ToString();
-                        label1.Text = "";
+                            break;
                     }
                     break;
                 case "sqrt":
@@ -134,6 +143,7 @@ namespace Simple_Calculator
             }
         }
 
+        // These buttons types digits into textbox
         private void Button10_Click(object sender, EventArgs e)
         {
             textBox1.Text += "0";
@@ -184,57 +194,92 @@ namespace Simple_Calculator
             textBox1.Text += "9";
         }
 
+        // Clears the textbox
         private void Button11_Click(object sender, EventArgs e)
         {
             label1.Text = "";
             textBox1.Clear();
         }
 
+        // Division
         private void Button16_Click(object sender, EventArgs e)
         {
-            a = Convert.ToDouble(textBox1.Text);
-            textBox1.Clear();
-            label1.Text = a + "/";
-            oper = "/";
-        }
-
-        private void Button13_Click(object sender, EventArgs e)
-        {
-            a = Convert.ToDouble(textBox1.Text);
-            textBox1.Clear();
-            label1.Text = a + "+";
-            oper = "+";
-        }
-
-        private void Button14_Click(object sender, EventArgs e)
-        {
-            a = Convert.ToDouble(textBox1.Text);
-            textBox1.Clear();
-            label1.Text = a + "-";
-            oper = "-";
-        }
-
-        private void Button15_Click(object sender, EventArgs e)
-        {
-            a = Convert.ToDouble(textBox1.Text);
-            label1.Text = a + "*";
-            oper = "*";
-            textBox1.Clear();
-        }
-
-        private void Button17_Click(object sender, EventArgs e)
-        {
-            if (sign == true)
+            try
             {
-                sign = false;
-                textBox1.Text = "-" + textBox1.Text;
-            } else if (sign == false)
+                a = Convert.ToDouble(textBox1.Text);
+                textBox1.Clear();
+                label1.Text = a + "/";
+                oper = "/";
+            } catch (FormatException)
             {
-                sign = true;
-                textBox1.Text = textBox1.Text.Replace("-", "");
+                MessageBox.Show("Invalid type of data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // Addition
+        private void Button13_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                a = Convert.ToDouble(textBox1.Text);
+                textBox1.Clear();
+                label1.Text = a + "+";
+                oper = "+";
+            } catch (FormatException)
+            {
+                MessageBox.Show("Invalid type of data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Subtraction 
+        private void Button14_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                a = Convert.ToDouble(textBox1.Text);
+                textBox1.Clear();
+                label1.Text = a + "-";
+                oper = "-";
+            } catch (FormatException)
+            {
+                MessageBox.Show("Invalid type of data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Multiplication 
+        private void Button15_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                a = Convert.ToDouble(textBox1.Text);
+                label1.Text = a + "*";
+                oper = "*";
+                textBox1.Clear();
+            } catch (FormatException)
+            {
+                MessageBox.Show("Invalid type of data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Changes the sign of number
+        private void Button17_Click(object sender, EventArgs e)
+        {
+            switch (sign)
+            {
+                case true:
+                    sign = false;
+                    textBox1.Text = "-" + textBox1.Text;
+                    sign = true;
+                    break;
+                case false:
+                    sign = true;
+                    textBox1.Text = textBox1.Text.Replace("-", "");
+                    sign = false;
+                    break;
+            }
+        }
+
+        // Deletes the digits of the entered number one by one
         private void Button18_Click(object sender, EventArgs e)
         {
             int length = textBox1.Text.Length - 1;
@@ -247,46 +292,82 @@ namespace Simple_Calculator
             }
         }
 
+        // Sin
         private void button19_Click(object sender, EventArgs e)
         {
-            a = Convert.ToDouble(textBox1.Text);
-            label1.Text = "sin(" + a + ")";
-            oper = "sin";
-            textBox1.Clear();
+            try
+            {
+                a = Convert.ToDouble(textBox1.Text);
+                label1.Text = "sin(" + a + ")";
+                oper = "sin";
+                textBox1.Clear();
+            } catch (FormatException)
+            {
+                MessageBox.Show("Invalid type of data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        // Cos
         private void button20_Click(object sender, EventArgs e)
         {
-            a = Convert.ToDouble(textBox1.Text);
-            label1.Text = "cos(" + a + ")";
-            oper = "cos";
-            textBox1.Clear();
+            try
+            {
+                a = Convert.ToDouble(textBox1.Text);
+                label1.Text = "cos(" + a + ")";
+                oper = "cos";
+                textBox1.Clear();
+            } catch (FormatException)
+            {
+                MessageBox.Show("Invalid type of data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        // Tg
         private void button21_Click(object sender, EventArgs e)
         {
-            a = Convert.ToDouble(textBox1.Text);
-            label1.Text = "tg(" + a + ")";
-            oper = "tg";
-            textBox1.Clear();
+            try
+            {
+                a = Convert.ToDouble(textBox1.Text);
+                label1.Text = "tg(" + a + ")";
+                oper = "tg";
+                textBox1.Clear();
+            } catch (FormatException)
+            {
+                MessageBox.Show("Invalid type of data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        // Ctg
         private void button22_Click(object sender, EventArgs e)
         {
-            a = Convert.ToDouble(textBox1.Text);
-            label1.Text = "ctg(" + a + ")";
-            oper = "ctg";
-            textBox1.Clear();
+            try
+            {
+                a = Convert.ToDouble(textBox1.Text);
+                label1.Text = "ctg(" + a + ")";
+                oper = "ctg";
+                textBox1.Clear();
+            } catch (FormatException)
+            {
+                MessageBox.Show("Invalid type of data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        // Square root of number
         private void button23_Click(object sender, EventArgs e)
         {
-            a = Convert.ToDouble(textBox1.Text);
-            label1.Text = "sqrt(" + a + ")";
-            oper = "sqrt";
-            textBox1.Clear();
+            try
+            {
+                a = Convert.ToDouble(textBox1.Text);
+                label1.Text = "sqrt(" + a + ")";
+                oper = "sqrt";
+                textBox1.Clear();
+            } catch (FormatException)
+            {
+                MessageBox.Show("Invalid type of data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        // Decimal separator
         private void button24_Click(object sender, EventArgs e)
         {
             if (sign)
@@ -297,14 +378,22 @@ namespace Simple_Calculator
             if (textBox1.Text.IndexOf(",") == -1) textBox1.Text += ',';
         }
 
+        // Raising a number to a power
         private void button25_Click(object sender, EventArgs e)
         {
-            a = Convert.ToDouble(textBox1.Text);
-            label1.Text = a + "^";
-            oper = "pow";
-            textBox1.Clear();
+            try
+            {
+                a = Convert.ToDouble(textBox1.Text);
+                label1.Text = a + "^";
+                oper = "pow";
+                textBox1.Clear();
+            } catch (FormatException)
+            {
+                MessageBox.Show("Invalid type of data!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        // This button calls the "Calc" function which checks and performs the specified operation
         private void Button12_Click(object sender, EventArgs e)
         {
             Calc();
