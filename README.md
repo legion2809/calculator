@@ -1,2 +1,2 @@
 # Calculator
-A simple calculator created on C# (WinForms)
+A simple calculator that created on C# (WinForms)
