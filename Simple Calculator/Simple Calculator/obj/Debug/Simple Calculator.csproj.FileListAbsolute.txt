@@ -11,10 +11,10 @@ C:\Users\LEGION\source\repos\Simple Calculator\Simple Calculator\obj\Debug\Simpl
 E:\Downloads\Documents\Git-projects\calculator\Simple Calculator\Simple Calculator\bin\Debug\Simple Calculator.exe.config
 E:\Downloads\Documents\Git-projects\calculator\Simple Calculator\Simple Calculator\bin\Debug\Simple Calculator.exe
 E:\Downloads\Documents\Git-projects\calculator\Simple Calculator\Simple Calculator\bin\Debug\Simple Calculator.pdb
-E:\Downloads\Documents\Git-projects\calculator\Simple Calculator\Simple Calculator\obj\Debug\Simple Calculator.csprojAssemblyReference.cache
-E:\Downloads\Documents\Git-projects\calculator\Simple Calculator\Simple Calculator\obj\Debug\Simple_Calculator.Form1.resources
 E:\Downloads\Documents\Git-projects\calculator\Simple Calculator\Simple Calculator\obj\Debug\Simple_Calculator.Properties.Resources.resources
 E:\Downloads\Documents\Git-projects\calculator\Simple Calculator\Simple Calculator\obj\Debug\Simple Calculator.csproj.GenerateResource.cache
 E:\Downloads\Documents\Git-projects\calculator\Simple Calculator\Simple Calculator\obj\Debug\Simple Calculator.csproj.CoreCompileInputs.cache
 E:\Downloads\Documents\Git-projects\calculator\Simple Calculator\Simple Calculator\obj\Debug\Simple Calculator.exe
 E:\Downloads\Documents\Git-projects\calculator\Simple Calculator\Simple Calculator\obj\Debug\Simple Calculator.pdb
+E:\Downloads\Documents\Git-projects\calculator\Simple Calculator\Simple Calculator\obj\Debug\Simple Calculator.csproj.AssemblyReference.cache
+E:\Downloads\Documents\Git-projects\calculator\Simple Calculator\Simple Calculator\obj\Debug\Simple_Calculator.MainForm.resources
