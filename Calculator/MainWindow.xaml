@@ -1,0 +1,51 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        Title="Calculator" Icon="/icon/icon.ico" Height="450" Width="900" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize">
+    <Grid>
+        <TextBox x:Name="MainTextBox" IsEnabled="False" Margin="10,19,10,396" TextCompositionManager.PreviewTextInput="FloatOnly"/>
+
+        <RadioButton x:Name="RadiansRButton" Content="Radians" Width="65" Height="15" Margin="10,52,825,367"/>
+        <RadioButton x:Name="DegreesRButton" Content="Degrees" Width="65" Height="15" Margin="80,52,755,367"/>
+
+        <Button Content="sin" Width="45" Height="20" Margin="62,83,793,331" Click="bSin_Click"/>
+        <Button Content="cos" Width="45" Height="20" Margin="10,83,845,331" Click="bCos_Click"/>
+        <Button Content="tg" Width="45" Height="20" Margin="114,83,741,331" Click="bTg_Click"/>
+        <Button Content="ctg" Width="45" Height="20" Margin="170,83,685,331" Click="bCtg_Click"/>
+
+        <Button x:Name="Button_7" Content="7" Width="50" Height="50" Margin="10,174,840,210" Click="bNum7_Click"/>
+        <Button x:Name="Button_8" Content="8" Width="50" Height="50" Margin="62,174,788,210" Click="bNum8_Click"/>
+        <Button x:Name="Button_9" Content="9" Width="50" Height="50" Margin="114,174,736,210" Click="bNum9_Click"/>
+
+        <Button x:Name="Button_4" Content="4" Width="50" Height="50" Margin="10,227,840,157" Click="bNum4_Click"/>
+        <Button x:Name="Button_5" Content="5" Width="50" Height="50" Margin="62,227,788,157" Click="bNum5_Click"/>
+        <Button x:Name="Button_6" Content="6" Width="50" Height="50" Margin="114,227,736,157" Click="bNum6_Click"/>
+
+        <Button x:Name="Button_1" Content="1" Width="50" Height="50" Margin="10,279,840,105" Click="bNum1_Click"/>
+        <Button x:Name="Button_2" Content="2" Width="50" Height="50" Margin="62,279,788,105" Click="bNum2_Click"/>
+        <Button x:Name="Button_3" Content="3" Width="50" Height="50" Margin="114,279,736,105" Click="bNum3_Click"/>
+
+        <Button Content="0" Height="50" Margin="10,334,788,50" Click="bNum0_Click"/>
+
+        <Button Content="&#8592;" Width="50" Height="50" Margin="10,119,840,265" Click="bDelDigits1By1_Click"/>
+        <Button Content="+/-" Width="50" Height="50" Margin="62,119,788,265" Click="bPosNegToggle_Click"/>
+        <Button x:Name="DecimalSeparatorButton" Content="," Width="50" Height="50" Margin="114,334,736,50" Click="bDecimalSeparator_Click"/>
+
+        <Button Content="/" Width="50" Height="50" Margin="170,174,680,210" Click="bDiv_Click"/>
+        <Button Content="*" Width="50" Height="50" Margin="170,227,680,157" Click="bMult_Click"/>
+        <Button Content="-" Width="50" Height="50" Margin="170,279,680,105" Click="bSub_Click" RenderTransformOrigin="0.54,0.68"/>
+        <Button Content="+" Width="50" Height="50" Margin="170,334,680,50" Click="bAdd_Click"/>
+        
+        <Button Content="&#8730;" Width="50" Height="50" Margin="170,119,680,265" Click="bSqrt_Click"/>
+        <Button Content="x^2" Width="50" Height="50" Margin="224,119,626,265" Click="bSquareNumber_Click"/>
+        <Button Content="x^y" Width="50" Height="50" Margin="224,174,626,210" Click="bRaiseToPower_Click"/>
+        <Button Content="1/x" Width="50" Height="50" Margin="224,227,626,157" Click="bReciprocal_Click"/>
+        
+        <Button Content="=" Width="50" Margin="224,279,626,50" Click="bEquals_Click"/>
+        <Button Content="C" Width="50" Height="50" Margin="114,119,736,265" Click="bClearAll_Click"/>
+    </Grid>
+</Window>
