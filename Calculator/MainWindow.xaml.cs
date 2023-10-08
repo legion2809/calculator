@@ -236,48 +236,64 @@
         private void bSin_Click(object sender, RoutedEventArgs e)
         {
             angleMeasure = RadiansRButton.IsChecked == true ? "radians" : "degrees";
-            calcOpId = 6;
             num1 = Convert.ToDouble(MainTextBox.Text);
-
-            calcOps = new CalcOperations(num1, 0);
-            MainTextBox.Text = calcOps.Calc(calcOpId, angleMeasure);
+            
+            if (RadiansRButton.IsChecked == true)
+            {
+                MainTextBox.Text = $"sinr({num1})={Math.Sin(num1)}";
+            } else
+            {
+                MainTextBox.Text = $"sin({num1})={Math.Round(Math.Sin(num1 * (Math.PI / 180)), 2)}";
+            }
         }
 
         // Cos
         private void bCos_Click(object sender, RoutedEventArgs e)
         {
             angleMeasure = RadiansRButton.IsChecked == true ? "radians" : "degrees";
-            calcOpId = 7;
             num1 = Convert.ToDouble(MainTextBox.Text);
 
-            calcOps = new CalcOperations(num1, 0);
-            MainTextBox.Text = calcOps.Calc(calcOpId, angleMeasure);
+            if (RadiansRButton.IsChecked == true)
+            {
+                MainTextBox.Text = $"cosr({num1})={Math.Cos(num1)}";
+            } else
+            {
+                MainTextBox.Text = $"cos({num1})={Math.Round(Math.Cos(num1 * (Math.PI / 180)), 2)}";
+            }
         }
 
         // Tg
         private void bTg_Click(object sender, RoutedEventArgs e)
         {
             angleMeasure = RadiansRButton.IsChecked == true ? "radians" : "degrees";
-            calcOpId = 8;
             num1 = Convert.ToDouble(MainTextBox.Text);
 
-            calcOps = new CalcOperations(num1, 0);
-            MainTextBox.Text = calcOps.Calc(calcOpId, angleMeasure);
+            if (angleMeasure == "radians")
+            {
+                MainTextBox.Text = $"tgr({num1})={Math.Tan(num1)}";
+            } else
+            {
+                MainTextBox.Text = $"tg({num1})={Math.Round(Math.Tan(num1 * (Math.PI / 180)), 2)}";
+            }
         }
 
         // Ctg
         private void bCtg_Click(object sender, RoutedEventArgs e)
         {
             angleMeasure = RadiansRButton.IsChecked == true ? "radians" : "degrees";
-            calcOpId = 9;
             num1 = Convert.ToDouble(MainTextBox.Text);
 
-            calcOps = new CalcOperations(num1, 0);
-            MainTextBox.Text = calcOps.Calc(calcOpId, angleMeasure);
+            if (RadiansRButton.IsChecked == true)
+            {
+                MainTextBox.Text = $"ctgr({num1})={1.0 / Math.Tan(num1)}";
+            } else
+            {
+                MainTextBox.Text = $"ctg({num1})={Math.Round((1.0 / Math.Tan(num1 * (Math.PI / 180))), 2)}";
+            }
         }
         #endregion
 
-        #region "Equals" button - performs almost all of calc operations
+        #region "Equals" button - performs almost all of the calc operations
 
         private void bEquals_Click(object sender, RoutedEventArgs e)
         {
