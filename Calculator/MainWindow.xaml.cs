@@ -283,7 +283,7 @@
             angleMeasure = RadiansRButton.IsChecked == true ? "radians" : "degrees";
             num1 = Convert.ToDouble(MainTextBox.Text);
 
-            if (RadiansRButton.IsChecked == true)
+            if (angleMeasure == "radians")
             {
                 MainTextBox.Text = $"ctgr({num1})={1.0 / Math.Tan(num1)}";
             } else
