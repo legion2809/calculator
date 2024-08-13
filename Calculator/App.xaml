@@ -5,6 +5,6 @@
              DispatcherUnhandledException="Application_DispatcherUnhandledException"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-
+        <FontFamily x:Key="CascadiaCode-SemiBold">./fonts/CascadiaCode-SemiBold.ttf#Cascadia Code Semibold</FontFamily>
     </Application.Resources>
 </Application>

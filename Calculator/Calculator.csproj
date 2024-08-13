@@ -8,11 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="fonts\CascadiaCode-SemiBold.ttf" />
     <None Remove="icon.ico" />
     <None Remove="icon\icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="fonts\CascadiaCode-SemiBold.ttf" />
     <Resource Include="icon\icon.ico">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
