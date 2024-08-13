@@ -7,45 +7,56 @@
         mc:Ignorable="d"
         Title="Calculator" Icon="/icon/icon.ico" Height="425" Width="461" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize">
     <Grid>
-        <TextBox x:Name="MainTextBox" IsEnabled="False" Margin="14,26,11,365" TextCompositionManager.PreviewTextInput="FloatOnly"/>
+        <!-- Entry and temp textboxes -->
+        <Label x:Name="TempLabel" Margin="14,10,11,381" FontFamily="{StaticResource CascadiaCode-SemiBold}" FontSize="14"/>
+        <TextBox x:Name="EntryTextBox" IsEnabled="False" Margin="14,33,11,358" TextCompositionManager.PreviewTextInput="FloatOnly" FontFamily="{StaticResource CascadiaCode-SemiBold}" FontSize="14"/>
 
-        <RadioButton x:Name="RadiansRButton" Content="Radians" Width="65" Height="15" Margin="14,59,381,335"/>
-        <RadioButton x:Name="DegreesRButton" Content="Degrees" Width="65" Height="15" Margin="84,59,311,335"/>
+        <!-- Angle measure togglers (radians or degrees) -->
+        <RadioButton x:Name="RadiansRButton" Content="Radians" Height="15" Margin="14,59,371,335" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <RadioButton x:Name="DegreesRButton" Content="Degrees" Height="15" Margin="90,59,299,335" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
 
-        <Button Content="sin" Width="45" Height="20" Margin="67,83,349,306" Click="bSin_Click"/>
-        <Button Content="cos" Width="45" Height="20" Margin="15,83,401,306" Click="bCos_Click"/>
-        <Button Content="tg" Width="45" Height="20" Margin="116,83,299,306" Click="bTg_Click"/>
-        <Button Content="ctg" Width="45" Height="20" Margin="170,83,246,306" Click="bCtg_Click"/>
+        <!-- Trigonometric functions -->
+        <Button Content="sin" Width="45" Height="20" Margin="67,83,349,306" Click="bSin_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button Content="cos" Width="45" Height="20" Margin="15,83,401,306" Click="bCos_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button Content="tg" Width="45" Height="20" Margin="116,83,299,306" Click="bTg_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button Content="ctg" Width="45" Height="20" Margin="170,83,246,306" Click="bCtg_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
 
-        <Button x:Name="Button_7" Content="7" Height="50" Margin="15,177,401,182" Click="bNum7_Click"/>
-        <Button x:Name="Button_8" Content="8" Height="50" Margin="67,177,349,182" Click="bNum8_Click"/>
-        <Button x:Name="Button_9" Content="9" Height="50" Margin="117,177,299,182" Click="bNum9_Click"/>
+        <!-- Digits -->
+        <Button x:Name="Button_7" Content="7" Height="50" Margin="15,177,401,182" Click="bNum7_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button x:Name="Button_8" Content="8" Height="50" Margin="67,177,349,182" Click="bNum8_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button x:Name="Button_9" Content="9" Height="50" Margin="117,177,299,182" Click="bNum9_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
 
-        <Button x:Name="Button_4" Content="4" Height="50" Margin="15,232,401,127" Click="bNum4_Click"/>
-        <Button x:Name="Button_5" Content="5" Height="50" Margin="67,232,349,127" Click="bNum5_Click"/>
-        <Button x:Name="Button_6" Content="6" Height="50" Margin="117,232,299,127" Click="bNum6_Click"/>
+        <Button x:Name="Button_4" Content="4" Height="50" Margin="15,232,401,127" Click="bNum4_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button x:Name="Button_5" Content="5" Height="50" Margin="67,232,349,127" Click="bNum5_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button x:Name="Button_6" Content="6" Height="50" Margin="117,232,299,127" Click="bNum6_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
 
-        <Button x:Name="Button_1" Content="1" Height="50" Margin="15,289,401,70" Click="bNum1_Click"/>
-        <Button x:Name="Button_2" Content="2" Height="50" Margin="67,289,349,70" Click="bNum2_Click"/>
-        <Button x:Name="Button_3" Content="3" Height="50" Margin="117,289,299,70" Click="bNum3_Click"/>
+        <Button x:Name="Button_1" Content="1" Height="50" Margin="15,289,401,70" Click="bNum1_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button x:Name="Button_2" Content="2" Height="50" Margin="67,289,349,70" Click="bNum2_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button x:Name="Button_3" Content="3" Height="50" Margin="117,289,299,70" Click="bNum3_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
 
-        <Button Content="0" Height="50" Margin="15,344,349,15" Click="bNum0_Click"/>
+        <Button Content="0" Height="50" Margin="15,344,349,15" Click="bNum0_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
 
-        <Button Content="&#8592;" Height="50" Margin="15,114,401,245" Click="bDelDigits1By1_Click"/>
-        <Button Content="+/-" Height="50" Margin="67,114,349,245" Click="bPosNegToggle_Click"/>
-        <Button x:Name="DecimalSeparatorButton" Content="," Height="50" Margin="117,344,299,15" Click="bDecimalSeparator_Click"/>
+        <!-- Backspace, positive/negative sign toggler and decimal separator -->
+        <Button Content="&#8592;" Height="50" Margin="15,114,401,245" Click="bDelDigits1By1_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button Content="+/-" Height="50" Margin="67,114,349,245" Click="bPosNegToggle_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button x:Name="DecimalSeparatorButton" Content="," Height="50" Margin="117,344,299,15" Click="bDecimalSeparator_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
 
-        <Button Content="/" Height="50" Margin="170,232,246,127" Click="bDiv_Click"/>
-        <Button Content="*" Height="50" Margin="170,177,246,182" Click="bMult_Click"/>
-        <Button Content="-" Height="50" Margin="170,344,246,15" Click="bSub_Click" RenderTransformOrigin="0.54,0.68"/>
-        <Button Content="+" Height="50" Margin="170,289,246,70" Click="bAdd_Click"/>
+        <!-- Mathematic operations -->
+        <Button Content="/" Height="50" Margin="170,232,246,127" Click="bDiv_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button Content="*" Height="50" Margin="170,177,246,182" Click="bMult_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button Content="-" Height="50" Margin="170,344,246,15" Click="bSub_Click" RenderTransformOrigin="0.54,0.68" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button Content="+" Height="50" Margin="170,289,246,70" Click="bAdd_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
 
-        <Button Content="&#8730;" Height="50" Margin="170,114,246,245" Click="bSqrt_Click"/>
-        <Button Content="x^2" Width="50" Height="50" Margin="224,114,187,245" Click="bSquareNumber_Click"/>
-        <Button Content="x^y" Width="50" Height="50" Margin="224,177,187,182" Click="bRaiseToPower_Click"/>
-        <Button Content="1/x" Height="50" Margin="225,232,187,127" Click="bReciprocal_Click"/>
+        <Button Content="&#8730;" Margin="225,83,187,306" Click="bSqrt_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button Content="x^2" Width="50" Height="50" Margin="224,114,187,245" Click="bSquareNumber_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button Content="x^y" Width="50" Height="50" Margin="224,177,187,182" Click="bRaiseToPower_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button Content="1/x" Height="50" Margin="225,232,187,127" Click="bReciprocal_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
 
-        <Button Content="=" Margin="225,289,187,15" Click="bEquals_Click"/>
-        <Button Content="C" Height="50" Margin="117,114,299,245" Click="bClearAll_Click"/>
+        <!-- "Equals" button -->
+        <Button Content="=" Margin="225,289,187,15" Click="bEquals_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+
+        <!-- "Clear all" and "Clear entry" -->
+        <Button Content="C" Height="50" Margin="117,114,299,245" Click="bClearAll_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
+        <Button Content="CE" Height="50" Margin="170,114,246,245" Click="bClearEntry_Click" FontFamily="{StaticResource CascadiaCode-SemiBold}"/>
     </Grid>
 </Window>
