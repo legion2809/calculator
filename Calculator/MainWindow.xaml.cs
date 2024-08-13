@@ -5,9 +5,9 @@
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Variables and constructor
         static double num1, num2;
         bool sign = true;
-        static int calcOpId;
         string calcOp = string.Empty, angleMeasure = string.Empty;
 
         CalcOperations? calcOps;
@@ -19,12 +19,14 @@
             if (Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator == ".")
             {
                 DecimalSeparatorButton.Content = ".";
-            }
-            else
+            } else
             {
                 DecimalSeparatorButton.Content = ",";
             }
+            EntryTextBox.Text = "0";
+            TempLabel.Content = "0";
         }
+        #endregion
 
         #region Only decimal or float (double) numbers
 
@@ -52,56 +54,80 @@
 
         #endregion
 
+        #region Util methods
+
+        private void AddDigit(string btnText)
+        {
+            if (EntryTextBox.Text == "0")
+            {
+                EntryTextBox.Text = btnText;
+            } else
+            {
+                EntryTextBox.Text += btnText;
+            }
+        }
+
+        private void ForCalcOpsWithTwoArgs()
+        {
+            string? text = TempLabel.Content.ToString();
+            if (text == string.Empty)
+            {
+                num1 = Convert.ToDouble(EntryTextBox.Text);
+            }
+        }
+
+        #endregion
+
         #region Inserting digits by clicking the corresponding buttons
 
         private void bNum0_Click(object sender, RoutedEventArgs e)
         {
-            MainTextBox.Text += "0";
+            AddDigit("0");
         }
 
         private void bNum1_Click(object sender, RoutedEventArgs e)
         {
-            MainTextBox.Text += "1";
+            AddDigit("1");
         }
 
         private void bNum2_Click(object sender, RoutedEventArgs e)
         {
-            MainTextBox.Text += "2";
+            AddDigit("2");
         }
 
         private void bNum3_Click(object sender, RoutedEventArgs e)
         {
-            MainTextBox.Text += "3";
+            AddDigit("3");
         }
 
         private void bNum4_Click(object sender, RoutedEventArgs e)
         {
-            MainTextBox.Text += "4";
+            AddDigit("4");
         }
 
         private void bNum5_Click(object sender, RoutedEventArgs e)
         {
-            MainTextBox.Text += "5";
+            AddDigit("5");
         }
 
         private void bNum6_Click(object sender, RoutedEventArgs e)
         {
-            MainTextBox.Text += "6";
+            AddDigit("6");
         }
 
         private void bNum7_Click(object sender, RoutedEventArgs e)
         {
-            MainTextBox.Text += "7";
+            AddDigit("7");
         }
 
         private void bNum8_Click(object sender, RoutedEventArgs e)
         {
-            MainTextBox.Text += "8";
+            AddDigit("8");
         }
 
         private void bNum9_Click(object sender, RoutedEventArgs e)
         {
-            MainTextBox.Text += "9";
+            AddDigit("9");
         }
 
         #endregion
@@ -113,15 +139,15 @@
             switch (Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator)
             {
                 case ",":
-                    if (!MainTextBox.Text.Contains(',', StringComparison.CurrentCulture))
+                    if (!EntryTextBox.Text.Contains(',', StringComparison.CurrentCulture))
                     {
-                        MainTextBox.Text += ",";
+                        EntryTextBox.Text += ",";
                     }
                     break;
                 case ".":
-                    if (!MainTextBox.Text.Contains('.', StringComparison.CurrentCulture))
+                    if (!EntryTextBox.Text.Contains('.', StringComparison.CurrentCulture))
                     {
-                        MainTextBox.Text += ".";
+                        EntryTextBox.Text += ".";
                     }
                     break;
             }
@@ -129,19 +155,19 @@
 
         private void bDelDigits1By1_Click(object sender, RoutedEventArgs e)
         {
-            int length = MainTextBox.Text.Length - 1;
-            string input = MainTextBox.Text;
-            MainTextBox.Clear();
+            int length = EntryTextBox.Text.Length - 1;
+            string input = EntryTextBox.Text;
+            EntryTextBox.Clear();
 
             for (int i = 0; i < length; i++)
             {
-                MainTextBox.Text += input[i];
+                EntryTextBox.Text += input[i];
             }
         }
 
         private void bPosNegToggle_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(MainTextBox.Text))
+            if (string.IsNullOrEmpty(EntryTextBox.Text))
             {
                 return;
             }
@@ -149,11 +175,11 @@
             switch (sign)
             {
                 case true:
-                    MainTextBox.Text = "-" + MainTextBox.Text;
+                    EntryTextBox.Text = "-" + EntryTextBox.Text;
                     sign = false;
                     break;
                 case false:
-                    MainTextBox.Text = MainTextBox.Text.Replace("-", "");
+                    EntryTextBox.Text = EntryTextBox.Text.Replace("-", "");
                     sign = true; 
                     break;
             }
@@ -167,83 +193,85 @@
         private void bAdd_Click(object sender, RoutedEventArgs e) 
         {
             calcOp = "+";
-            calcOpId = 1;
-            num1 = Convert.ToDouble(MainTextBox.Text);
-            MainTextBox.Text += calcOp;
+            num1 = Convert.ToDouble(EntryTextBox.Text);
+            TempLabel.Content = $"{num1} {calcOp}";
+            EntryTextBox.Text = "0";
         }
 
         // Subtraction
         private void bSub_Click(object sender, RoutedEventArgs e) 
         {
             calcOp = "-";
-            calcOpId = 2;
-            num1 = Convert.ToDouble(MainTextBox.Text);
-            MainTextBox.Text += calcOp;
+            num1 = Convert.ToDouble(EntryTextBox.Text);
+            TempLabel.Content = $"{num1} {calcOp}";
+            EntryTextBox.Text = "0";
         }
 
         // Multiplication
         private void bMult_Click(object sender, RoutedEventArgs e)
         {
             calcOp = "*";
-            calcOpId = 3;
-            num1 = Convert.ToDouble(MainTextBox.Text);
-            MainTextBox.Text += calcOp;
+            num1 = Convert.ToDouble(EntryTextBox.Text);
+            TempLabel.Content = $"{num1} {calcOp}";
+            EntryTextBox.Text = "0";
         }
 
         // Division
         private void bDiv_Click(object sender, RoutedEventArgs e) 
         {
             calcOp = "/";
-            calcOpId = 4;
-            num1 = Convert.ToDouble(MainTextBox.Text);
-            MainTextBox.Text += calcOp;
+            num1 = Convert.ToDouble(EntryTextBox.Text);
+            TempLabel.Content = $"{num1} {calcOp}";
+            EntryTextBox.Text = "0";
         }
         
         // Square root of number
         private void bSqrt_Click(object sender, RoutedEventArgs e) 
         {
-            double temp = Convert.ToDouble(MainTextBox.Text);
-            MainTextBox.Clear();
-            MainTextBox.Text = Math.Sqrt(temp).ToString();
+            num1 = Convert.ToDouble(EntryTextBox.Text);
+            EntryTextBox.Clear();
+            TempLabel.Content = $"sqrt({num1}) = ";
+            EntryTextBox.Text = Math.Sqrt(num1).ToString();
         }
 
         // Square number
         private void bSquareNumber_Click(object sender, RoutedEventArgs e)
         {
-            double temp = Convert.ToDouble(MainTextBox.Text);
-            MainTextBox.Clear();
-            MainTextBox.Text = Math.Pow(temp, 2).ToString();
+            double num1 = Convert.ToDouble(EntryTextBox.Text);
+            EntryTextBox.Clear();
+            EntryTextBox.Text = Math.Pow(num1, 2).ToString();
         }  
 
         // Raising a number to specified power
         private void bRaiseToPower_Click(object sender, RoutedEventArgs e)
         {
             calcOp = "^";
-            calcOpId = 5;
-            num1 = Convert.ToDouble(MainTextBox.Text);
-            MainTextBox.Text += calcOp;
+            num1 = Convert.ToDouble(EntryTextBox.Text);
+            TempLabel.Content = $"{num1} {calcOp}";
+            EntryTextBox.Text = "0";
         }
 
         // Reciprocal
         private void bReciprocal_Click(object sender, RoutedEventArgs e)
         {
-            double temp = Convert.ToDouble(MainTextBox.Text);
-            MainTextBox.Clear();
-            MainTextBox.Text = (1 / temp).ToString();
+            num1 = Convert.ToDouble(EntryTextBox.Text);
+            EntryTextBox.Clear();
+            TempLabel.Content = $"1 / {num1}";
+            EntryTextBox.Text = (1 / num1).ToString();
         }
 
         // Sin
         private void bSin_Click(object sender, RoutedEventArgs e)
         {
             angleMeasure = RadiansRButton.IsChecked == true ? "radians" : "degrees";
-            num1 = Convert.ToDouble(MainTextBox.Text);
+            num1 = Convert.ToDouble(EntryTextBox.Text);
             
             if (RadiansRButton.IsChecked == true)
             {
-                MainTextBox.Text = $"sinr({num1})={Math.Sin(num1)}";
+                EntryTextBox.Text = $"sinr({num1})={Math.Sin(num1)}";
             } else
             {
-                MainTextBox.Text = $"sin({num1})={Math.Round(Math.Sin(num1 * (Math.PI / 180)), 2)}";
+                EntryTextBox.Text = $"sin({num1})={Math.Round(Math.Sin(num1 * (Math.PI / 180)), 2)}";
             }
         }
 
@@ -251,14 +279,14 @@
         private void bCos_Click(object sender, RoutedEventArgs e)
         {
             angleMeasure = RadiansRButton.IsChecked == true ? "radians" : "degrees";
-            num1 = Convert.ToDouble(MainTextBox.Text);
+            num1 = Convert.ToDouble(EntryTextBox.Text);
 
             if (RadiansRButton.IsChecked == true)
             {
-                MainTextBox.Text = $"cosr({num1})={Math.Cos(num1)}";
+                EntryTextBox.Text = $"cosr({num1})={Math.Cos(num1)}";
             } else
             {
-                MainTextBox.Text = $"cos({num1})={Math.Round(Math.Cos(num1 * (Math.PI / 180)), 2)}";
+                EntryTextBox.Text = $"cos({num1})={Math.Round(Math.Cos(num1 * (Math.PI / 180)), 2)}";
             }
         }
 
@@ -266,14 +294,14 @@
         private void bTg_Click(object sender, RoutedEventArgs e)
         {
             angleMeasure = RadiansRButton.IsChecked == true ? "radians" : "degrees";
-            num1 = Convert.ToDouble(MainTextBox.Text);
+            num1 = Convert.ToDouble(EntryTextBox.Text);
 
             if (angleMeasure == "radians")
             {
-                MainTextBox.Text = $"tgr({num1})={Math.Tan(num1)}";
+                EntryTextBox.Text = $"tgr({num1})={Math.Tan(num1)}";
             } else
             {
-                MainTextBox.Text = $"tg({num1})={Math.Round(Math.Tan(num1 * (Math.PI / 180)), 2)}";
+                EntryTextBox.Text = $"tg({num1})={Math.Round(Math.Tan(num1 * (Math.PI / 180)), 2)}";
             }
         }
 
@@ -281,14 +309,14 @@
         private void bCtg_Click(object sender, RoutedEventArgs e)
         {
             angleMeasure = RadiansRButton.IsChecked == true ? "radians" : "degrees";
-            num1 = Convert.ToDouble(MainTextBox.Text);
+            num1 = Convert.ToDouble(EntryTextBox.Text);
 
             if (angleMeasure == "radians")
             {
-                MainTextBox.Text = $"ctgr({num1})={1.0 / Math.Tan(num1)}";
+                EntryTextBox.Text = $"ctgr({num1})={1.0 / Math.Tan(num1)}";
             } else
             {
-                MainTextBox.Text = $"ctg({num1})={Math.Round((1.0 / Math.Tan(num1 * (Math.PI / 180))), 2)}";
+                EntryTextBox.Text = $"ctg({num1})={Math.Round((1.0 / Math.Tan(num1 * (Math.PI / 180))), 2)}";
             }
         }
         #endregion
@@ -297,9 +325,10 @@
 
         private void bEquals_Click(object sender, RoutedEventArgs e)
         {
-            num2 = Convert.ToDouble(MainTextBox.Text.Substring(MainTextBox.Text.IndexOf(calcOp) + 1));
+            num2 = Convert.ToDouble(EntryTextBox.Text);
             calcOps = new CalcOperations(num1, num2);
-            MainTextBox.Text = calcOps.Calc(calcOpId);
+            TempLabel.Content = $"{num1} {calcOp} {num2} = ";
+            EntryTextBox.Text = calcOps.Calc(calcOp);
         }
 
         #endregion
@@ -308,7 +337,13 @@
 
         private void bClearAll_Click(object sender, RoutedEventArgs e)
         {
-            MainTextBox.Clear();
+            EntryTextBox.Text = "0";
+            TempLabel.Content = "0";
+        }
+
+        private void bClearEntry_Click(object sender, RoutedEventArgs e)
+        {
+            EntryTextBox.Text = "0";
         }
 
         #endregion
