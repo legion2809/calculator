@@ -12,26 +12,36 @@
         }
 
         #region Arithmetic operations
+
+        // Addition
         private string Add()
         {
             return $"{num1 + num2}";
         }
 
+        // Subtraction
         private string Sub()
         {
             return $"{num1 - num2}";
         }
 
+        // Multiplication
         private string Mul()
         {
             return $"{num1 * num2}";
         }
 
+        // Division
         private string Div()
         {
+            if (num2 == 0)
+            {
+                return "Cannot divide by zero";
+            }
             return $"{num1 / num2}";
         }
 
+        // Raising to power
         private string Pow()
         {
             return $"{Math.Pow(num1, num2)}";
@@ -41,10 +51,9 @@
         /// <summary>
         /// Performs calculation
         /// </summary>
-        /// <param name="id">ID of mathematical operation</param>
-        /// <param name="angleMeasure">Angle measure (degrees or radians) - for trigonometric operations</param>
+        /// <param name="calcOp">Sign of mathematical operation</param>
         /// <returns>Result of calculation (as a string value)</returns>
-        public string Calc(string calcOp, string angleMeasure = "")
+        public string Calc(string calcOp)
         {
             string result = string.Empty;
             switch (calcOp)
