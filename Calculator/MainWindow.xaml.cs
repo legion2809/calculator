@@ -351,14 +351,13 @@
         private void bClearAll_Click(object sender, RoutedEventArgs e)
         {
             EntryTextBox.Text = "0";
-            TempLabel.Content = "0";
+            TempLabel.Content = string.Empty;
             calcFuncCalls = 0;
         }
 
         private void bClearEntry_Click(object sender, RoutedEventArgs e)
         {
             EntryTextBox.Text = "0";
-            calcFuncCalls = 0;
         }
 
         #endregion

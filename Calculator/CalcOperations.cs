@@ -56,26 +56,16 @@
         public string Calc(string calcOp)
         {
             string result = string.Empty;
-            switch (calcOp)
-            {
-                case "+":
-                    result = Add();
-                    break;
-                case "-":
-                    result = Sub();
-                    break;
-                case "*":
-                    result = Mul();
-                    break;
-                case "/":
-                    result = Div();
-                    break;
-                case "^":
-                    result = Pow();
-                    break;
-            }
 
-            return result;
+            return result switch
+            {
+                "+" => Add(),
+                "-" => Sub(),
+                "*" => Mul(),
+                "/" => Div(),
+                "^" => Pow(),
+                _ => "0",
+            };
         }
     }
 }
