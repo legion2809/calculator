@@ -17,13 +17,10 @@
         {
             InitializeComponent();
             DegreesRButton.IsChecked = true;
-            if (Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator == ".")
-            {
-                DecimalSeparatorButton.Content = ".";
-            } else
-            {
-                DecimalSeparatorButton.Content = ",";
-            }
+            DecimalSeparatorButton.Content = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator switch { 
+                "." => ".",
+                _ => ",",
+            };
             EntryTextBox.Text = "0";
             TempLabel.Content = string.Empty;
         }
@@ -68,14 +65,14 @@
             }
         }
 
-        private void ForCalcOpsWithTwoArgs()
+        /*private void ForCalcOpsWithTwoArgs()
         {
             string? text = TempLabel.Content.ToString();
             if (text == string.Empty)
             {
                 num1 = Convert.ToDouble(EntryTextBox.Text);
             }
-        }
+        }*/
 
         #endregion
 
